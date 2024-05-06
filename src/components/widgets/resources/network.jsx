@@ -8,7 +8,7 @@ import Error from "../widget/error";
 export default function Network({ options, refresh = 5000 }) {
   const { t } = useTranslation();
 
-  const { data, error } = useSWR(`/api/widgets/resources?type=network${(options.network || options.network !== 'default') ? `&interfaceName=${options.network}` : '' }`, {
+  const { data, error } = useSWR(`/api/widgets/resources?type=network${(options.network || ( options.network !== 'default' && options.network === `false`)) ? `&interfaceName=${options.network}` : '' }`, {
     refreshInterval: refresh,
   });
 

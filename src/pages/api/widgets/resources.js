@@ -51,7 +51,7 @@ export default async function handler(req, res) {
 
   if (type === "network"){
     let networkData = await si.networkStats();
-    if(interfaceName !== "default" && interfaceName !== undefined && interfaceName !== "false"){
+    if(interfaceName !== "default" && interfaceName !== undefined && interfaceName !== "false" && interfaceName !== "true"){
       networkData = networkData.filter((network) => network.iface === interfaceName)['0'];
       if(!networkData){
         return res.status(404).json({
